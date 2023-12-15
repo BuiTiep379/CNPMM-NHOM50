@@ -268,16 +268,13 @@ function ListCategories() {
             </Card>
           </Col>
           <Col span={24} md={8} className="mb-24">
-            <Card
-              bordered={true}
-              title="Create new category"
-            >
+            <Card bordered={true} title="Create new category">
               <Form form={formAdd} onFinish={handleAddCategory}>
                 <Form.Item
                   name="name"
                   className="input-product"
                   sx={{
-                    width: "100%"
+                    width: '100%',
                   }}
                   rules={[
                     {
@@ -292,12 +289,6 @@ function ListCategories() {
                   name="parentId"
                   size="large"
                   className="custom-selector"
-                  rules={[
-                    {
-                      required: true,
-                      message: 'Please enter category!',
-                    },
-                  ]}
                 >
                   <Select
                     placeholder="select a category parent"

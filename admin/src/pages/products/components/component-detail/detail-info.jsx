@@ -28,7 +28,7 @@ const DetailInfo = (props) => {
     },
     {
       name: 'Màu sắc',
-      value: color.value,
+      value: color,
     },
     {
       name: 'Giá gốc',

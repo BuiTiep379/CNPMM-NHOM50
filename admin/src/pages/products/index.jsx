@@ -394,9 +394,6 @@ function Products() {
                 style={{ marginLeft: '5px' }}
               >
                 <Col>
-                  <Button className="search-button">Search</Button>
-                </Col>
-                <Col>
                   <Button
                     className="search-button"
                     onClick={handleDetailProduct}

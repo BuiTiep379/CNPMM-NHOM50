@@ -24,7 +24,15 @@ const TabInfo = (props) => {
   const dispatch = useDispatch();
   // * color selected
   const [categoryParent, setCategoryParent] = useState([]);
+  const validateSalePrice = (rule, value, callback) => {
+    const regularPrice = form.getFieldValue('regularPrice');
 
+    if (value && parseFloat(value) >= parseFloat(regularPrice)) {
+      callback('Sale price must be less than regular price!');
+    } else {
+      callback();
+    }
+  };
   const onSearch = (value) => {
     console.log('search:', value);
   };
@@ -79,7 +87,19 @@ const TabInfo = (props) => {
             </Form.Item>
           </Col>
         </Row>
-        <Form.Item name="salePrice" className="input-product">
+        <Form.Item
+          name="salePrice"
+          className="input-product"
+          rules={[
+            {
+              required: true,
+              message: 'Please enter sale price!',
+            },
+            {
+              validator: validateSalePrice,
+            },
+          ]}
+        >
           <Input placeholder="sale price" />
         </Form.Item>
         <Form.Item

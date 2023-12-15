@@ -44,8 +44,8 @@ const ModalEditAddress = (props) => {
     clearErrors,
   } = useForm({ resolver: yupResolver(updateAddressValidationSchema) });
   // * list id
-  const [provinceID, setProvinceID] = useState('');
-  const [districtID, setDistrictID] = useState('');
+  const [provinceId, setProvinceId] = useState('');
+  const [districtId, setDistrictId] = useState('');
   const [wardCode, setWardCode] = useState('');
   // * end list id
   // * list input
@@ -85,18 +85,18 @@ const ModalEditAddress = (props) => {
     const provinceID = e.target.value;
     const provinceObject = _.find(listProvince, { ProvinceID: provinceID });
     setProvinceName(provinceObject.ProvinceName);
-    setProvinceID(provinceObject.ProvinceID);
+    setProvinceId(provinceObject.ProvinceID);
     getAddressAPI.getAPIDistrict(provinceObject.ProvinceID).then((data) => {
       setListDistrict(data);
       setDistrictName('');
-      setDistrictID('');
+      setDistrictId('');
     });
   };
   const handleChangeDistrict = (e) => {
     const districtID = e.target.value;
     const provinceObject = _.find(listDistrict, { DistrictID: districtID });
     setDistrictName(provinceObject.DistrictName);
-    setDistrictID(provinceObject.DistrictID);
+    setDistrictId(provinceObject.DistrictID);
     getAddressAPI.getAPIWard(provinceObject.DistrictID).then((data) => {
       setListWard(data);
       setWardCode('');
@@ -115,9 +115,9 @@ const ModalEditAddress = (props) => {
       address,
       mobileNumber,
       provinceName,
-      provinceID,
+      provinceId,
       districtName,
-      districtID,
+      districtId,
       wardCode,
       wardName,
       _id: item._id,
@@ -155,7 +155,7 @@ const ModalEditAddress = (props) => {
         .then((data) => {
           setListProvince(data);
           const provinceObject = _.find(data, { ProvinceName: provinceName });
-          setProvinceID(provinceObject.ProvinceID);
+          setProvinceId(provinceObject.ProvinceID);
           setProvinceName(provinceObject.ProvinceName);
           setValue('provinceName', provinceObject.ProvinceName);
           return getAddressAPI.getAPIDistrict(provinceObject.ProvinceID);
@@ -163,7 +163,7 @@ const ModalEditAddress = (props) => {
         .then((data) => {
           setListDistrict(data);
           const districtObject = _.find(data, { DistrictName: districtName });
-          setDistrictID(districtObject.DistrictID);
+          setDistrictId(districtObject.DistrictID);
           setDistrictName(districtObject.DistrictName);
           setValue('districtName', districtObject.DistrictName);
           return getAddressAPI.getAPIWard(districtObject.DistrictID);
@@ -224,7 +224,7 @@ const ModalEditAddress = (props) => {
             name="provinceName"
             type="text"
             fullWidth
-            value={provinceID}
+            value={provinceId}
             onChange={handleChangeProvince}
             sx={{ paddingLeft: '0px' }}
           >
@@ -264,7 +264,7 @@ const ModalEditAddress = (props) => {
             type="text"
             fullWidth
             onChange={handleChangeDistrict}
-            value={districtID ? districtID : ''}
+            value={districtId ? districtId : ''}
             sx={{ paddingLeft: '0px' }}
           >
             {listDistrict &&

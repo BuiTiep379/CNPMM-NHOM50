@@ -1,7 +1,7 @@
 import React from 'react';
 
 const DigitalInfo = (props) => {
-  const { detailsProduct, attribute } = props;
+  const { detailsProduct, ram, storage } = props;
   const {
     screen,
     os,
@@ -34,7 +34,7 @@ const DigitalInfo = (props) => {
     },
     {
       name: 'Ram and storage',
-      value: attribute.code && attribute.code,
+      value: ram && storage,
     },
     {
       name: 'Thông số sim',

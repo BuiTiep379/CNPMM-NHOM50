@@ -22,11 +22,12 @@ const DetailModal = (props) => {
       sale,
       salePrice,
       regularPrice,
-      attribute,
       category_path,
       stock,
       detailsProduct,
       description,
+      ram,
+      storage,
     } = productSelected;
     console.log('product selected', productSelected);
     const info = {
@@ -40,8 +41,10 @@ const DetailModal = (props) => {
       regularPrice,
       stock,
       category_path,
+      ram,
+      storage,
     };
-
+    console.log(productSelected.color);
     if (Object.keys(productSelected).length !== 0) {
       listTabs = [
         {
@@ -55,7 +58,8 @@ const DetailModal = (props) => {
           children: (
             <DigitalInfo
               detailsProduct={detailsProduct}
-              attribute={attribute}
+              ram={ram}
+              storage={storage}
             />
           ),
         },
